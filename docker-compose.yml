@@ -1,0 +1,17 @@
+
+services:
+  postgres:
+    image: postgres:16
+    container_name: traditional_dw_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: dwuser
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: retail_source
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
